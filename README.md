@@ -34,7 +34,8 @@ import os`
 
 3. ChatBot Class Initialization
 
-`class ChatBot:
+class ChatBot:
+
     def __init__(self):
         self.training_model = load_model('training_model.h5')
         encoder_inputs = self.training_model.input[0]
@@ -69,22 +70,22 @@ import os`
             messages.append({'sender': 'user', 'message': user_input})
             messages.append({'sender': 'bot', 'message': bot_response})
             return self.render_chat(messages)
-
-if __name__ == '__main__':
-    ch = ChatBot()
-    ch.run_web_chat_bot()`
-    
+         
+         if __name__ == '__main__':
+             ch = ChatBot()
+             ch.run_web_chat_bot()`
+             
 4. HTML Template (chat.html)
 
-`<div id="chat-container">
-    {% for message in messages %}
-        {% if message.sender == 'bot' %}
-            <p class="bot-message">Bot: {{ message.message }}</p>
-        {% elif message.sender == 'user' %}
-            <p class="user-message">User: {{ message.message }}</p>
-        {% endif %}
-    {% endfor %}
-</div>`
+         `<div id="chat-container">
+             {% for message in messages %}
+                 {% if message.sender == 'bot' %}
+                     <p class="bot-message">Bot: {{ message.message }}</p>
+                 {% elif message.sender == 'user' %}
+                     <p class="user-message">User: {{ message.message }}</p>
+                 {% endif %}
+             {% endfor %}
+         </div>`
 
 # Result and Discussion
 Model Loading and Architecture: Successfully loads a pre-trained seq2seq model.
@@ -96,6 +97,9 @@ Fuzzy Matching: Improved handling of variations in user queries.
 Interactive Chat Loop: Engages users in a dynamic conversation.
 
 Web Interface (Flask): Real-time chat messages and user-friendly interface.
+
+![image](https://github.com/user-attachments/assets/9ee8b069-d32a-4aed-98d3-fc5011d10c22)    ![image](https://github.com/user-attachments/assets/01e127f5-9a58-4e5c-bd62-97e1ea3477e4)
+
 
 # Vision
 Create a sophisticated conversational agent that provides personalized, empathetic, and contextually relevant interactions, anticipating and exceeding future user requirements.
