@@ -8,31 +8,33 @@ Visual Studio Code: Recommended for development.
 
 ## Dependencies
 Install the required Python libraries by running:
+
 `pip install flask keras numpy difflib`
+
 ## Files Needed
-training_model.h5: Pre-trained neural network model.
-knowledge_base.json: Knowledge base for the chatbot.
-Feature dictionaries: input_features_dict, target_features_dict, reverse_target_features_dict.
-Methodology
+1. training_model.h5: Pre-trained neural network model.
+2. knowledge_base.json: Knowledge base for the chatbot.
+3. Feature dictionaries: input_features_dict, target_features_dict, reverse_target_features_dict.
+
+# Methodology
 1. Importing Libraries
-python
-Copy code
-import json
+   
+`import json
 import numpy as np
 from difflib import get_close_matches
 from keras.models import load_model, Model
 from keras.layers import Input, LSTM, Dense
 from flask import Flask, render_template, request
 import re
-import os
+import os`
+
 2. Initializing Flask App
-python
-Copy code
-app = Flask(__name__, template_folder='templates', static_folder='static')
+
+`app = Flask(__name__, template_folder='templates', static_folder='static')`
+
 3. ChatBot Class Initialization
-python
-Copy code
-class ChatBot:
+
+`class ChatBot:
     def __init__(self):
         self.training_model = load_model('training_model.h5')
         encoder_inputs = self.training_model.input[0]
@@ -70,11 +72,11 @@ class ChatBot:
 
 if __name__ == '__main__':
     ch = ChatBot()
-    ch.run_web_chat_bot()
+    ch.run_web_chat_bot()`
+    
 4. HTML Template (chat.html)
-html
-Copy code
-<div id="chat-container">
+
+`<div id="chat-container">
     {% for message in messages %}
         {% if message.sender == 'bot' %}
             <p class="bot-message">Bot: {{ message.message }}</p>
@@ -82,20 +84,18 @@ Copy code
             <p class="user-message">User: {{ message.message }}</p>
         {% endif %}
     {% endfor %}
-</div>
-Result and Discussion
+</div>`
+
+# Result and Discussion
 Model Loading and Architecture: Successfully loads a pre-trained seq2seq model.
+
 Knowledge Base: Efficient handling of user queries and dynamic updates.
+
 Fuzzy Matching: Improved handling of variations in user queries.
+
 Interactive Chat Loop: Engages users in a dynamic conversation.
+
 Web Interface (Flask): Real-time chat messages and user-friendly interface.
-Future Directions
-Advanced NLP Techniques: Implement attention mechanisms for improved response generation.
-User Experience Enhancement: Add sentiment analysis for better empathy.
-Multimodal Integration: Include image, video, and audio inputs.
-Interactive Learning: Use reinforcement learning for continuous improvement.
-Multi-Language Support: Expand to support multiple languages.
-Context-Aware Responses: Maintain context during extended conversations.
-Collaborative Learning: Share knowledge across multiple chatbot instances.
-Vision
+
+# Vision
 Create a sophisticated conversational agent that provides personalized, empathetic, and contextually relevant interactions, anticipating and exceeding future user requirements.
